@@ -96,3 +96,11 @@ A security group acts as a virtual firewall that controls the traffic for one or
 
 ![image](./images/security-group.png)
 ___
+
+- STEP 6: ADD STORAGE
+
+Amazon EC2 stores data on a network-attached virtual disk called Amazon Elastic Block Store (Amazon EBS).
+
+You launch the EC2 instance using a default 30 GiB disk volume. This is your root volume (also known as a boot volume).
+
+In the Configure storage section, keep the default storage configuration.

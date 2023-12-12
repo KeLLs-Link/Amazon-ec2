@@ -280,6 +280,8 @@ ___
 ## Task 4: Connecting to your instance using AWS Systems Manager Fleet Manager
 With the Fleet Manager capability of AWS Systems Manager, you can remotely manage and configure your managed nodes. A managed node is any machine configured for Systems Manager.
 
+![image](./images/systemsmanager.png)
+
 When you started this lab, your AWS user was automatically given permissions to use Systems Manager. In addition, the AWS Identity and Access Management (IAM) policy that you selected when configuring your EC2 instance turned on Systems Manager for your Web-Server instance.
 
 One convenient feature of Fleet Manager is the ability to connect to your EC2 instance using a browser. In this task, you connect to your Windows desktop using Fleet Manager.
@@ -293,3 +295,89 @@ Under Managed nodes, select  your Web-Server EC2 instance.
 From the Node actions dropdown list, choose Connect with Remote Desktop.
 
 A new tab opens.
+Enter the following values:
+```
+Username: Administrator
+Password: P@ssW0rD!
+```
+![image](./images/fleet-manager.png)
+
+Choose Connect.
+After several seconds, the pane displays the Windows desktop. You can navigate this desktop just like you would on a local computer. As you learned earlier, with Amazon EC2, you can quickly access compute resources. Instead of buying physical hardware and configuring an operating system, all you have to do is launch an EC2 instance, and all of that work is done for you automatically in minutes.
+
+To disconnect from your Web-Server instance, choose Action and then choose End session.
+
+In the pop-up window, choose End session again .
+___
+## Task 5: Resizing your instance
+
+As your needs change, you might find that your instance is overutilized (too small) or underutilized (too large). If so, you can change the instance type. For example, if a t2.micro instance is too small for its workload, you can change it to an m5.medium instance.
+
+- STOP YOUR INSTANCE
+
+Before you can resize an instance, you must stop it.
+
+When you stop an instance, it is shut down. There is no charge for a stopped EC2 instance, but the storage charge for attached EBS volumes remains.
+
+From the AWS Management Console on the Services menu, choose EC2
+
+On the EC2 Management Console, in the left navigation pane, choose Instances.
+
+Select the check box next to your Web-Server instance. At the top of the page, choose the Instance state  dropdown menu, and choose Stop instance.
+
+In the Stop instance? pop-up window, choose Stop.
+
+Your instance performs a normal shutdown and then stops running.
+
+Wait for the Instance state to display Stopped.
+
+- CHANGE THE INSTANCE TYPE
+
+Select the check box next to your Web-Server. From the Actions  dropdown menu, select Instance settings  Change instance type, and then configure the following option:
+Instance type: Select t2.nano.
+Choose Apply
+
+![image](./images/t2nano.png)
+
+- START THE RESIZED INSTANCE
+
+When the instance is started again, it is a t2.nano instance. You now start the instance again, which has less memory but more disk space.
+
+In left navigation pane, choose Instances. Next to your Web-Server, select the  check box.
+
+From the Instance state  dropdown menu, choose Start instance.
+
+Once the instance is restarted, the Instance state displays Running.
+___
+## Task 6: Testing termination protection
+You can delete your instance when you no longer need it. This is referred to as terminating your instance. You cannot connect to or restart an instance after it has been terminated.
+
+In this task, you learn how to use termination protection.
+
+Select the check box next to your Web-Server instance. From the Instance state  dropdown menu, choose Terminate instance.
+
+Notice the message next to the Terminate instance option: Termination protection is enabled for one or more of the selected instances.
+
+This is a safeguard to prevent the accidental termination of an instance. If you really want to terminate the instance, you need to turn off termination protection.
+
+You can easily enable and disable termination protection from the Actions dropdown menu.
+
+From the Actions dropdown menu, choose Instance settings, and then choose Change termination protection.
+
+Clear the check box for  Enable.
+
+Choose Save.
+
+Now, try to terminate the instance again.
+
+The instance state will now successfully be terminated.
+![image](./images/terminatedinstance.png)
+
+## Task 7: Exploring EC2 limits
+
+Amazon EC2 provides different resources that you can use. These resources include images, instances, volumes, and snapshots. When you create an AWS account, there are default limits on these resources on a per-Region basis.
+
+In the left navigation pane, choose Limits.
+Note: There is a limit on the number of instances that you can launch in this Region. When launching an instance, the request must not cause your usage to exceed the current instance limit in that Region.
+
+You can request an increase for many of these limits.

@@ -253,3 +253,43 @@ Security group set to allow inbound rule from http port 80
 
 ![image](./images/inbound-rule.png)
 
+![image](./images/landingpage.png)
+```
+http://54.211.126.82
+```
+Note: Notice the “Rules with source of 0.0.0.0/0 allow all IP addresses to access your instance. We recommend setting security group rules to allow access from known IP addresses only.” While this is true and common best practice, this lab allows access from any IP address (Anywhere) to simplify both the security group configuration and testing of the website running on your EC2 instance.
+
+ In this lab, you can only add a new Ingress rule. You cannot change it a rule it has been created. Double check the configuration before choosing Save rules.
+
+Choose Save rules
+
+Return to the web server browser tab with the public IPv4 address that you previously opened, and choose  to refresh the page.
+
+You should now find a web website with the message Welcome Students!
+
+Note: If the web site is not loading, verify that the URL in the address bar begins with 
+
+```
+http://
+```
+ and not 
+```
+https://
+```
+___
+## Task 4: Connecting to your instance using AWS Systems Manager Fleet Manager
+With the Fleet Manager capability of AWS Systems Manager, you can remotely manage and configure your managed nodes. A managed node is any machine configured for Systems Manager.
+
+When you started this lab, your AWS user was automatically given permissions to use Systems Manager. In addition, the AWS Identity and Access Management (IAM) policy that you selected when configuring your EC2 instance turned on Systems Manager for your Web-Server instance.
+
+One convenient feature of Fleet Manager is the ability to connect to your EC2 instance using a browser. In this task, you connect to your Windows desktop using Fleet Manager.
+
+In the AWS Management Console on the Services menu, search for and select Systems Manager.
+
+In the left nagivation pane, select Fleet Manager.
+
+Under Managed nodes, select  your Web-Server EC2 instance.
+
+From the Node actions dropdown list, choose Connect with Remote Desktop.
+
+A new tab opens.

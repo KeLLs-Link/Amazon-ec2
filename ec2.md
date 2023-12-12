@@ -381,3 +381,6 @@ In the left navigation pane, choose Limits.
 Note: There is a limit on the number of instances that you can launch in this Region. When launching an instance, the request must not cause your usage to exceed the current instance limit in that Region.
 
 You can request an increase for many of these limits.
+
+## Summary
+In this lab you created an EC2 instance and learned to manage instance properties such as the instance type. You modified security group settings to make the website reachable, and you learned how to use termination protection to prevent instance deletion. You learned how to stop, start, and terminate an EC2 instance. Finally, you learned how to find the EC2 limits for your AWS account. Great job!

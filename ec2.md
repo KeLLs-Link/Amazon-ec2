@@ -173,3 +173,39 @@ Status Checks:  2/2 checks passed
 ```
 ![image](./images/instance-launched.png)
 ___
+
+## Task 2: Monitor your instance
+Monitoring is an important part of maintaining the reliability, availability, and performance of your EC2 instances and your AWS solutions.
+
+Choose the Status checks tab.
+With instance status monitoring, you can quickly determine whether Amazon EC2 has detected any problems that might prevent your instances from running applications. Amazon EC2 performs automated checks on every running EC2 instance to identify hardware and software issues.
+
+Notice that both the System reachability and Instance reachability checks have passed.
+
+Choose the Monitoring tab.
+This tab displays Amazon CloudWatch metrics for your instance. Currently, there are not many metrics to display because the instance was recently launched.
+
+You can choose a graph to see an expanded view.
+
+Amazon EC2 sends metrics to Amazon CloudWatch for your EC2 instances. Basic (5 minute) monitoring is turned on by default and is free. You can turn on detailed (1 minute) monitoring. With detailed monitoring, you will be charged per metric that you send to CloudWatch.
+
+At the top of the page, choose the Actions  dropdown menu. Select Monitor and troubleshoot  Get system log.
+The system log displays the console output of the instance, which is a valuable tool for problem diagnosis. It is especially useful for troubleshooting service configuration issues that could cause an instance to terminate or become unreachable. If you do not see a system log, wait a few minutes and then try again.
+
+Scroll through the log and review the messages in the output.
+
+To return to the Amazon EC2 dashboard, choose Cancel.
+
+With your Web-Server selected, choose the Actions  dropdown menu, and select Monitor and troubleshoot  Get instance screenshot.
+
+This option shows you what your EC2 instance console would look like if a screen were attached to it. Because this is a Windows instance, the screenshot shows a locked log-in screen.
+```
+monitoring enabled at 5min
+system logs
+instance screenshot
+
+```
+![image](./images/monitoring2.png)
+![image](./images/systemlogs.png)
+![image](./images/instance-screenshot.png)
+___

@@ -75,3 +75,24 @@ In the Key pair (login) section, from the Key pair name - required dropdown list
 
 ![image](./images/keypair.png)
 ___
+
+- STEP 5: CONFIGURE THE NETWORK SETTINGS
+
+You use this pane to configure networking settings.
+
+The virtual private cloud (VPC) indicates which VPC you want to launch the instance into. You can have multiple VPCs, including different ones for development, testing, and production.
+
+In the Network settings section, choose Edit.
+
+From the VPC - required dropdown list, choose Lab VPC.
+
+The Lab VPC was created using an AWS CloudFormation template during the setup process of your lab. This VPC includes two public subnets in two different Availability Zones.
+
+For Security group name - required, choose Select existing security group.
+
+From Common security groups, select Web Server security group.
+
+A security group acts as a virtual firewall that controls the traffic for one or more instances. When you launch an instance, you associate one or more security groups with the instance. You add rules to each security group that allow traffic to or from its associated instances. You can modify the rules for a security group at any time; the new rules are automatically applied to all instances that are associated with the security group.
+
+![image](./images/security-group.png)
+___

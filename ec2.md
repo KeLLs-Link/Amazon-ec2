@@ -104,3 +104,72 @@ Amazon EC2 stores data on a network-attached virtual disk called Amazon Elastic 
 You launch the EC2 instance using a default 30 GiB disk volume. This is your root volume (also known as a boot volume).
 
 In the Configure storage section, keep the default storage configuration.
+![image](./images/configure-storage.png)
+___
+
+- STEP 7: CONFIGURE ADVANCED DETAILS
+
+Expand the Advanced details section.
+
+For IAM instance profile, choose the role that has LabInstanceProfile in the name.
+
+When you no longer require an EC2 instance, you can terminate it, which means that the instance stops, and Amazon EC2 releases the instance’s resources. You cannot restart a terminated instance. If you want to prevent your users from accidentally terminating the instance, you can turn on (enable) termination protection for the instance, which prevents users from terminating instances.
+
+From the Termination protection dropdown list, choose Enable.
+When you launch an instance in Amazon EC2, you have the option of passing user data to the instance. These commands can be used to perform common automated configuration tasks and even run scripts after the instance starts.
+
+Copy the following commands, and paste them into the User data text box.
+```
+<powershell>
+# Installing web server
+Install-WindowsFeature -name Web-Server -IncludeManagementTools
+# Getting website code
+wget https://us-east-1-tcprod.s3.amazonaws.com/courses/CUR-TF-100-EDCOMP/v1.0.4.prod-ef70397c/01-lab-ec2/scripts/code.zip -outfile "C:\Users\Administrator\Downloads\code.zip"
+# Unzipping website code
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+function Unzip
+{
+    param([string]$zipfile, [string]$outpath)
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
+}
+Unzip "C:\Users\Administrator\Downloads\code.zip" "C:\inetpub\"
+# Setting Administrator password
+$Secure_String_Pwd = ConvertTo-SecureString "P@ssW0rD!" -AsPlainText -Force
+$UserAccount = Get-LocalUser -Name "Administrator"
+$UserAccount | Set-LocalUser -Password $Secure_String_Pwd
+</powershell>
+
+```
+The script does the following:
+
+1. Installs a Microsoft Internet Information Services (IIS) web server
+2. Creates a simple web site
+3. Sets the password for the Administrator user
+
+![image](./images/advance-details.png)
+___
+- STEP 8: LAUNCH AN EC2 INSTANCE
+
+Now that you have configured your EC2 instance settings, it is time to launch your instance.
+
+In the Summary section, choose Launch instance.
+A message indicates that you have successfully initiated the launch of your instance.
+
+Choose View all instances
+The instance appears in a Pending state, which means that it is being launched. It then changes to Running, which indicates that the instance has started booting. There will be a short time before you can access the instance.
+
+The instance receives a public Domain Name System (DNS) name that you can use to contact the instance from the Internet.
+
+Next to your Web-Server, select the  check box. The Details tab displays detailed information about your instance.
+ To view more information in the Details tab, drag the window divider upward.
+
+Review the information displayed in the Details, Security and Networking tabs.
+
+Wait for your instance to display the following:
+Note: Refresh if needed.
+```
+Instance State:  Running
+Status Checks:  2/2 checks passed
+```
+![image](./images/instance-launched.png)
+___
